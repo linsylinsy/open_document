@@ -28,7 +28,7 @@ Intent://명령어?파라미터=옵션
 
 ### 앱실행
 
-> Sample
+ * Sample
 ```
 hoteldfsapp://
 ```
