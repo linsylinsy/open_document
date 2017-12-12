@@ -28,7 +28,7 @@ Intent://명령어?파라미터=옵션
 
 ### 앱실행
 
-> Sample
+ * Sample
 ```
 lemayapp://
 ```
@@ -40,12 +40,12 @@ lemayapp://
 | 상품검색  |  search | product={product_id}  |
 | 이벤트검색  |  search | event={event_id}  |
 
-> Sample
+ * Sample
 ```
 //상품번호 1의 상품 상세정보를 표시
 lemayapp://search?product=1
 
 //이벤트번호 10의 이벤트상세화면을 표시
-lemayapp://search?product=1
+lemayapp://search?event=1
 
 ```
