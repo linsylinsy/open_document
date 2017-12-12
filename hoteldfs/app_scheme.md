@@ -26,21 +26,21 @@ Intent://명령어?파라미터=옵션
 
 ## URL 스킴적용 예제
 
-1. 앱실행
+### 앱실행
 
-### Sample
+> Sample
 ```
 hoteldfsapp://
 ```
 
-2. 상품검색
+### 상품검색
 
 | 기능  | 명령어  | 파라미터=옵션  |
 |---|---|---|
 | 상품검색  |  search | product={product_id}  |
 | 이벤트검색  |  search | event={event_id}  |
 
-### Sample
+> Sample
 ```
 //상품번호 1의 상품 상세정보를 표시
 hoteldfsapp://search?product=1
