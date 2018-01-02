@@ -30,7 +30,7 @@ Intent://명령어?파라미터=옵션
 
  * Sample
 ```
-lemayapp://referrer=hotel
+lemayapp://search?referrer=hotel
 ```
 
 ### 상품검색(From Hotel)
