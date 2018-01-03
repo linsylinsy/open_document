@@ -33,6 +33,28 @@ Intent://명령어?파라미터=옵션
 lemayapp://search?referrer=hotel
 ```
 
+### 메인화면(From Hotel)
+
+| 기능  | 명령어  | 파라미터=옵션  |
+|---|---|---|
+| 홈화면  |  search | tab=0  |
+| 베스트  |  search | tab=1  |
+| 핫세일  |  search | tab=2  |
+| 이벤트  |  search | tab=3  |
+| 내정보  |  search | tab=4  |
+
+ * Sample
+```
+//베스트탭화면을표시
+lemayapp://search?tab=1
+
+//이벤트탭화면을표시
+lemayapp://search?tab=3
+```
+
+
+
+
 ### 상품검색(From Hotel)
 
 | 기능  | 명령어  | 파라미터=옵션  |
