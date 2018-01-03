@@ -33,6 +33,20 @@ Intent://명령어?파라미터=옵션
 lemayapp://search?referrer=hotel
 ```
 
+### 계정연동(From Hotel)
+
+| 기능  | 명령어  | 파라미터=옵션  |
+|---|---|---|
+| 로그인  |  search | customer_id={customer_id}&token={token}  |
+
+ * Sample
+```
+//앱실행(로그인상태)
+lemayapp://search?customer_id=1&token=abcde&referrer=hotel
+
+```
+
+
 ### 메인화면(From Hotel)
 
 | 기능  | 명령어  | 파라미터=옵션  |
@@ -45,14 +59,12 @@ lemayapp://search?referrer=hotel
 
  * Sample
 ```
-//베스트탭화면을표시
-lemayapp://search?tab=1
+//베스트탭화면을표시(From HotelApp)
+lemayapp://search?tab=1&referrer=hotel
 
 //이벤트탭화면을표시
 lemayapp://search?tab=3
 ```
-
-
 
 
 ### 상품검색(From Hotel)
