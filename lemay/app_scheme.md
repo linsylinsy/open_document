@@ -13,7 +13,7 @@ system에서 전달된 url scheme을 보고 실행 가능한 앱이 있는지 �
 1.기본형식
 르메이 앱을 실행시키기 위해서는 다음과 같은 custom url을 구성해야합니다.
 ```
-lemayapp://명령어?파라미터=옵션
+lemayapp://명령어?파라미터=옵션&referrer={hotel}&customer_id={customer_id}&token={token}
 ```
 2.Intent Scheme
 안드로이드에서는 intent scheme을 이용할 수도 있습니다. 다음과 같은 형식의 custom url을 구성하면, 앱이 설치되어 있지 않을 때 자동으로 구글 플레이 설치 페이지로 이동합니다.
@@ -26,28 +26,20 @@ Intent://명령어?파라미터=옵션
 
 ## URL 스킴적용 예제
 
-### 앱실행(From Hotel)
+### 단순 앱실행
 
  * Sample
 ```
-lemayapp://search?referrer=hotel
-```
+//로그인상태
+lemayapp://default?referrer=hotel&customer_id={customer_id}&token={token}
 
-### 계정연동(From Hotel)
-
-| 기능  | 명령어  | 파라미터=옵션  |
-|---|---|---|
-| 로그인  |  search | customer_id={customer_id}&token={token}  |
-
- * Sample
-```
-//앱실행(로그인상태)
-lemayapp://search?customer_id=1&token=abcde&referrer=hotel
-
+//로그아웃상태
+lemayapp://default?referrer=hotel
 ```
 
 
-### 메인화면(From Hotel)
+
+### 랜딩페이지
 
 | 기능  | 명령어  | 파라미터=옵션  |
 |---|---|---|
@@ -56,6 +48,8 @@ lemayapp://search?customer_id=1&token=abcde&referrer=hotel
 | 핫세일  |  search | tab=2  |
 | 이벤트  |  search | tab=3  |
 | 내정보  |  search | tab=4  |
+| 상품검색  |  search | product={product_id}  |
+| 이벤트검색  |  search | event={event_id}  |
 
  * Sample
 ```
@@ -64,18 +58,6 @@ lemayapp://search?tab=1&referrer=hotel
 
 //이벤트탭화면을표시
 lemayapp://search?tab=3
-```
-
-
-### 상품검색(From Hotel)
-
-| 기능  | 명령어  | 파라미터=옵션  |
-|---|---|---|
-| 상품검색  |  search | product={product_id}  |
-| 이벤트검색  |  search | event={event_id}  |
-
- * Sample
-```
 //상품번호 1의 상품 상세정보를 표시
 lemayapp://search?product=1&referrer=hotel
 
@@ -83,3 +65,4 @@ lemayapp://search?product=1&referrer=hotel
 lemayapp://search?event=1&referrer=hotel
 
 ```
+
