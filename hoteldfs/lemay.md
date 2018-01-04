@@ -21,12 +21,12 @@ Hotel 시스템에서 Lemay 사용자로 회원가입할 때, 로그인 할 때,
 | 파라미터 | 설명 |
 | ------------- |:-------------:|
 | token | md5("user/add" + "vizz") |
-| apptyppe | "hotel" | 
+| apptype | "hotel" | 
 | language_id | 1 : 영어, 2 : 중국어 |
 | name | 이름 | 
 | email | 이메일 | 
 | password | password | 
-| tellephone | 전화번호 | 
+| telephone | 전화번호 | 
 | wechat | wechat 아이디 | 
 | hotel_check_out | check out 날짜 | 
 | language_id | 1 : 영어, 2 : 중국어 |
@@ -50,7 +50,7 @@ Hotel 시스템에서 Lemay 사용자로 회원가입할 때, 로그인 할 때,
 | 파라미터 | 설명 |
 | ------------- |:-------------:|
 | token | md5("user/login" + "vizz") |
-| apptyppe | "hotel" | 
+| apptype | "hotel" | 
 | language_id | 1 : 영어, 2 : 중국어 |
 | type | "email"  로 전달 할 것.  | 
 | email | 이메일 | 
@@ -75,7 +75,7 @@ Hotel 시스템에서 Lemay 사용자로 회원가입할 때, 로그인 할 때,
 | 파라미터 | 설명 |
 | ------------- |:-------------:|
 | token | md5("user/getUserInfo" + "vizz") |
-| apptyppe | "hotel" | 
+| apptype | "hotel" | 
 | language_id | 1 : 영어, 2 : 중국어 |
 | customer_id | 로그인시 받은  customer_id  | 
 | customer_token | 로그인시 받은  token  | 
@@ -102,17 +102,20 @@ Hotel 시스템에서 Lemay 사용자로 회원가입할 때, 로그인 할 때,
 | 파라미터 | 설명 |
 | ------------- |:-------------:|
 | token | md5("user/edit" + "vizz") |
-| apptyppe | "hotel" | 
+| apptype | "hotel" | 
 | language_id | 1 : 영어, 2 : 중국어 |
 | customer_id | 로그인시 받은  customer_id  | 
 | customer_token | 로그인시 받은  token  | 
 | name | 실제 이름 | 
-| email | 이메일 | 
 | telephone | telephone | 
 | wechat | wechat 아이디 | 
 | hotel_check_out | check out 날짜 | 
 | status | 1 : Enabled, 0 : Disabled |
 
+* 성공시 <br/>
+{"success":"Update Successed","token":"2KvT3MXsHXp0kflGIrKoDMgn5"}
+* 실패시<br/>
+{"error":"Parameter error"}
 
 ## 패스워드 변경  API
 * /admin/index.php?route=api/user/editPassword
@@ -120,7 +123,7 @@ Hotel 시스템에서 Lemay 사용자로 회원가입할 때, 로그인 할 때,
 | 파라미터 | 설명 |
 | ------------- |:-------------:|
 | token | md5("user/editPassword" + "vizz") |
-| apptyppe | "hotel" | 
+| apptype | "hotel" | 
 | customer_id | 로그인시 받은  customer_id  | 
 | customer_token | 로그인시 받은  token  | 
 | password | 현재 password | 
@@ -134,7 +137,7 @@ Hotel 시스템에서 Lemay 사용자로 회원가입할 때, 로그인 할 때,
 {"error":"Parameter error"}
 
 
-## 패스워드 변실  API
+## 패스워드 분실  API
 * /admin/index.php?route=api/user/forgetPassword
 
 | 파라미터 | 설명 |
