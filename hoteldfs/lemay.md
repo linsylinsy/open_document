@@ -143,7 +143,7 @@ Hotel 시스템에서 Lemay 사용자로 회원가입할 때, 로그인 할 때,
 | 파라미터 | 설명 |
 | ------------- |:-------------:|
 | token | md5("user/editPassword" + "vizz") |
-| apptyppe | "hotel" |
+| apptype | "hotel" |
 | language_id | 1 : 영어, 2 : 중국어 |
 | email | 가입된 이메일 | 
 
