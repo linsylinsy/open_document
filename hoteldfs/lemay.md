@@ -1,53 +1,83 @@
-# Lemay DB 사용방법
-Hotel 시스템에서 Lemay 사용자로 회원가입할 때, 로그인 할 때, 회원정보 변경시에는 직접 DB를 접근해서 수정하고 패스워드 분실은 API를 통하여 접근한다. 
+# Lemay API 사용방법
+Hotel 시스템에서 Lemay 사용자로 회원가입할 때, 로그인 할 때, 회원정보 변경시에는 사용하는 DB
 
-## Lemay 의 DB 접근
-* Hotel 시스템과 동일한 DB 접근 주소, DB 유저, DB 패스워드를 이용하고 스키마만 lemay 로 접속한다.
 
-## Hasing 된 패스워드 체계
-* PBKDF2 
-* Hash function : SHA256 알고리즘 적용
-* Salt : ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 글자중 9자리
-  * ex) vyTUcCVVD, 8vPgc3QZP
-* Iternation : 1000회
-* DLen : 20byte
-* 최종 결과는 20byte를 소문자 hex string 으로 변환한 40글자
-* 참고 : http://d2.naver.com/helloworld/318732
-* ex) 예1
-  * salt : jA3BAWv9F
-  * password : abcd1234
-  * 결과 : c059b2879ac9fbe11469f0340c14573fc8f6a6e5
-* ex) 예2
-  * salt : jA3BAWv9F
-  * password : ABCD1234
-  * 결과 : 6ac6860b93ae64fadb0bed24604506a449bd81d1
+## 공통사항
+* URL 체계(URL 체계의 경우 차후에 변경 될 수 있다는 점을 고려해서 함수로 분리 필요합니다. )
+  * http://www.lemaydfs.com/admin/index.php?route=[경로명]&[파라미터key1]=[파라미터value1]&[파라미터key2]=[파라미터value2]  
+* 공통파라미터 
+  * token
+    * md5를 통해 구한 값으로 모든 API 마다 구하는 방법을 명시해 두었습니다. 차후에 보안을 위해 더 강화될 수 있다는 점을 고려해서 함수로 분리 필요합니다. 
+* 모든 Methoud 는 POST 형입니다. 
 
-## 회원가입 유저테이블
- * 테이블명 : customer
- * __customer_id__ : Primary Key 로 Auto Increasement 값
- * __customer_group_id__ : 2로 지정할 것
- * store_id : 0으로 지정할 것
- * __firstname__ : 회원가입시 이름을 입력할 경우 넣고 안 넣을 경우 empty string("") 처리
- * lastname : empty string 처리 
- * email : 가입된 이메일
- * password : 위에서 설명한 Hasing 된 패스워드 체계의 결과
- * newletter : 0 처러
- * address_id : 0 처리
- * ip : 회원가입한 클라이언트 IP
- * status : 1
- * approved : 1
- * safe : 1
- * date_added : 회원가일 l일시(UTC 기준)
- * lang_id : 클라이언트 사용언어 ( 1: 영어, 2 : 중국어)
- * type : email
- * hotel_id : 0
- * change_pwd_time : 0
- * 나머지 인자는 emptry string 으로 처리
 
-## 로그인 체크
- * 테이블명 : customer
- * loginToken 같과 같은지 비교한다. 
- * 로그인시 0~9, A-Z, a-z로 이루어진 25자리 랜덤스트링을 생성하고 이 값을 저장하는 형태임
+## 회원가입 API
+* /admin/index.php?route=api/user/add&totken=[token]
+* 
+| 파라미터 | 설명 |
+| ------------- |:-------------:|
+| token | md5("user/add" + "vizz") |
+| firstname | 실제 이름 | 
+| email | 실제 이름 | 
+| tellephone | 전화번호 | 
+| wechat | wechat 아이디 | 
+| language_id | 1 : 영어, 2 : 중국어 |
 
- ## 패스워드 분실시 
-  * 
+## 로그인 API
+* /admin/index.php?route=api/user/login&totken=[token]
+* 
+| 파라미터 | 설명 |
+| ------------- |:-------------:|
+| token | md5("user/login" + "vizz") |
+| type | "email"  로 전달 할 것.  | 
+| password | password | 
+
+* 로그인 이 후 response 받는 형식
+
+| 파라미터 | 설명 |
+| ------------- |:-------------:|
+| customer_id | 다른 API 를 보낼 때 필요한 값이므로 <br/>꼭 저장해 두어야 한다.  |
+| token | 다른 API 를 보낼 때 customer_token 이라는<br/> 값으로 보내는 값이므로 꼭 저장대 두어야 한다.   | 
+
+
+
+## 회원정보 수정 API
+* /admin/index.php?route=api/user/edit&totken=[token]
+* 
+| 파라미터 | 설명 |
+| ------------- |:-------------:|
+| token | md5("user/edit" + "vizz") |
+| customer_id | 로그인시 받은  customer_id  | 
+| firstname | 실제 이름 | 
+| email | 이메일 | 
+| telephone | telephone | 
+| wechat | wechat 아이디 | 
+| status | 1 : Enabled, 0 : Disabled |
+| language_id | 1 : 영어, 2 : 중국어 |
+
+
+## 패스워드 변경  API
+* /admin/index.php?route=api/user/editPassword&totken=[token]
+* 
+| 파라미터 | 설명 |
+| ------------- |:-------------:|
+| token | md5("user/editPassword" + "vizz") |
+| customer_id | 로그인시 받은  customer_id  | 
+| password | 현재 password | 
+| new_password | 변경하려는 password | 
+| language_id | 1 : 영어, 2 : 중국어 |
+
+## 패스워드 변실  API
+* /admin/index.php?route=api/user/forgetPassword&totken=[token]
+* 
+| 파라미터 | 설명 |
+| ------------- |:-------------:|
+| token | md5("user/editPassword" + "vizz") |
+| email | 가입된 이메일 | 
+
+* 해당 API 호출시 가입된 이메일로 인증 메일이 전달됩니다. 
+
+
+
+
+
