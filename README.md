@@ -9,5 +9,5 @@ lemay와 Hotel과 관련된 문서들을 만듭니다.
 
 ## HotelDFS
 
-* [1.외부에서 호출](/hoteldfs/app_scheme.md)
-* [2.Lemay API 연동법](/hoteldfs/lemay.md)
+* [1.외부에서 호출](/hoteldfs/app_scheme.md) 
+* deprecated <del>[2.Lemay API 연동법](/hoteldfs/lemay.md) </del>

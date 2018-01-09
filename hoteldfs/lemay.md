@@ -1,4 +1,8 @@
+# deprecated
+
+<del>
 # Lemay API 사용방법
+
 Hotel 시스템에서 Lemay 사용자로 회원가입할 때, 로그인 할 때, 회원정보 변경시에는 사용하는 DB
 
 
@@ -154,7 +158,7 @@ Hotel 시스템에서 Lemay 사용자로 회원가입할 때, 로그인 할 때,
 {"error":"Parameter error"}
 * 해당 API 호출시 가입된 이메일로 인증 메일이 전달됩니다. 
 
-
+</del>
 
 
 
