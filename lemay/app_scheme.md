@@ -50,19 +50,21 @@ lemayapp://default?referrer=hotel
 | 내정보  |  search | tab=4  |
 | 상품검색  |  search | product={product_id}  |
 | 이벤트검색  |  search | event={event_id}  |
+| 브랜드  |  search | brand={brand_id}  |
 
  * Sample
 ```
-//베스트탭화면을표시(From HotelApp)
-lemayapp://search?tab=1&referrer=hotel
+//베스트탭화면을표시
+lemayapp://search?tab=1
 
 //이벤트탭화면을표시
 lemayapp://search?tab=3
+
 //상품번호 1의 상품 상세정보를 표시
-lemayapp://search?product=1&referrer=hotel
+lemayapp://search?product=1
 
 //이벤트번호 10의 이벤트상세화면을 표시
-lemayapp://search?event=1&referrer=hotel
+lemayapp://search?event=1
 
 ```
 
