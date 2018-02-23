@@ -64,7 +64,7 @@ lemayapp://search?tab=3
 lemayapp://search?product=1
 
 //이벤트번호 10의 이벤트상세화면을 표시
-lemayapp://search?event=1
+lemayapp://search?event=10
 
 ```
 
